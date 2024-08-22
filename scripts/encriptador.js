@@ -32,9 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.getElementById('copyBtn').addEventListener('click', () => {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Texto copiado al portapapeles');
-                resetOutput();
-                inputText.value = '';
+                inputText.value = ''; // Limpia la caja de entrada
+                resetOutput(); // Restablece la salida
+            }).catch(err => {
+                console.error('Error al copiar el texto: ', err);
             });
         });
     }
